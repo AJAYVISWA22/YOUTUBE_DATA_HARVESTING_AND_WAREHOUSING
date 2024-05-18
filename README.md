@@ -5,7 +5,7 @@ This YouTube Data Harvesting application allows users to collect, store, view, a
 
 ## Features
 1. **Add/Remove YouTube Channels**: Users can add new channels to the database or remove existing channels.
-2. **Search**: Users can search and view data from the database including channels, playlists, videos, and comments.
+2. **Search**: Users can search and view data from the database of a desired channel including channel details, playlists, videos, and comments.
 3. **Analysis**: Provides various analytical insights based on the harvested data.
 
 ## Installation
@@ -20,21 +20,15 @@ This YouTube Data Harvesting application allows users to collect, store, view, a
 
 ### Setup
 
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/yourusername/yourrepository.git
-   cd yourrepository
-   ```
-
-2. **Install Dependencies**:
+1. **Install Dependencies**:
    ```bash
    pip install streamlit pandas google-api-python-client psycopg2
    ```
 
-3. **Database Setup**:
+2. **Database Setup**:
    Ensure that PostgreSQL is installed and running. Create a database named `DATAS` and configure the database connection in the script if necessary.
 
-4. **API Key Setup**:
+3. **API Key Setup**:
    Obtain a YouTube Data API v3 key from the Google Developer Console and replace the `Api_Id` in the `Api_connect()` function.
 
 ## Running the Application
@@ -53,7 +47,7 @@ import pandas as pd
 import streamlit as st
 
 def Api_connect():
-    Api_Id = "YOUR_API_KEY"
+    Api_Id = "YOUR_API_KEY"            # Enter  Your API KEY
     api_service_name = "youtube"
     api_version = "v3"
     return build(api_service_name, api_version, developerKey=Api_Id)
@@ -62,15 +56,15 @@ def get_db_connection():
     return psycopg2.connect(
         host="localhost",
         user="postgres",
-        password="Ajay",
-        database="DATAS",
+        password="*********",               # Enter Your Password
+        database="DATAS",                   # Enter Your Database name
         port="5432"
     )
 ```
 This section sets up connections to the YouTube Data API and PostgreSQL database.
 
 ### 2. Fetching YouTube Data
-Functions to fetch channel, video, and comment data from YouTube.
+Functions to fetch channel details, video, and comment data from YouTube.
 
 ### 3. Inserting Data into PostgreSQL
 Functions to create tables and insert fetched data into the PostgreSQL database.
@@ -90,7 +84,7 @@ Displays a welcome message.
 Allows users to add a new channel to the database by entering the channel ID or remove an existing channel by entering the channel name.
 
 ### Search
-Users can select a channel and view data from the channels, playlists, videos, or comments tables.
+Users can select a channel and view data of the desired channel from the channels, playlists, videos, or comments tables.
 
 ### Analysis
 Provides analytical insights such as:
@@ -105,6 +99,18 @@ Provides analytical insights such as:
 9. Average duration of all videos in each channel.
 10. Videos with the highest number of comments.
 
+
+### To Run
+Make sure the changes in the API and Database Connection as mentioned above.
+Run the following command in your terminal to start the Streamlit application:
+```bash
+streamlit run yourscript.py
+```
+"Ensure the terminal path!"
+
+
 ## Conclusion
 This application provides a comprehensive solution for harvesting and analyzing YouTube data. Users can easily manage YouTube channel data and gain valuable insights through a simple and intuitive interface.
+
+
 
